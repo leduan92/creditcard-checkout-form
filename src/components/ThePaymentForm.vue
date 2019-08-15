@@ -25,6 +25,7 @@
                               data_card_holder
                               name="card-holder"
                               ref="card-holder"
+                              :value="name"
                 ></v-text-field>
             </v-flex>
 
