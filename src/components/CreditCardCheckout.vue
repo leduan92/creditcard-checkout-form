@@ -20,13 +20,13 @@ import TheOrderComponent from './TheOrderComponent'
 import ThePaymentComponent from './ThePaymentComponent'
 
 export default {
-    name: 'CreditCardCheckout',
-    components: {
-      TheMainContent,
-      TheOrderComponent,
-      ThePaymentComponent
-    }
-};
+  name: 'CreditCardCheckout',
+  components: {
+    TheMainContent,
+    TheOrderComponent,
+    ThePaymentComponent
+  }
+}
 </script>
 
 <style media="screen">

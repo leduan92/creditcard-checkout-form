@@ -11,37 +11,36 @@
 </template>
 
 <script>
-    import CarouselPaymentComponent from './CarouselPaymentComponent'
-    import ThePaymentForm from './ThePaymentForm'
+import CarouselPaymentComponent from './CarouselPaymentComponent'
+import ThePaymentForm from './ThePaymentForm'
 
-    export default {
-        name: "ThePaymentComponent",
-        components: {
-            CarouselPaymentComponent,
-            ThePaymentForm
-        },
-        data () {
-            return {
-                cardHolder: "",
-                cardNumber: "",
-                cardDate: "MM/YYYY"
-            }
-        },
-        methods: {
-            setCardHolder (name) {
-                this.cardHolder = name;
-            },
-            setCardNumber (val) {
-                this.cardNumber = val;
-            },
-            setCardDate (date) {
-                if (date._i.month === undefined && date._i.year === undefined) {
-                    this.cardDate = ""
-                }
-                else this.cardDate = date._i.month + "/" + date._i.year;
-            }
-        }
+export default {
+  name: 'ThePaymentComponent',
+  components: {
+    CarouselPaymentComponent,
+    ThePaymentForm
+  },
+  data () {
+    return {
+      cardHolder: '',
+      cardNumber: '',
+      cardDate: 'MM/YYYY'
     }
+  },
+  methods: {
+    setCardHolder (name) {
+      this.cardHolder = name
+    },
+    setCardNumber (val) {
+      this.cardNumber = val
+    },
+    setCardDate (date) {
+      if (date._i.month === undefined && date._i.year === undefined) {
+        this.cardDate = ''
+      } else this.cardDate = date._i.month + '/' + date._i.year
+    }
+  }
+}
 </script>
 
 <style media="screen">

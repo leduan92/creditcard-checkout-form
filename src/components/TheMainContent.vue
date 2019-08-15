@@ -14,9 +14,9 @@
 </template>
 
 <script>
-    export default {
-        name: "TheMainContent"
-    }
+export default {
+  name: 'TheMainContent'
+}
 </script>
 
 <style media="screen">

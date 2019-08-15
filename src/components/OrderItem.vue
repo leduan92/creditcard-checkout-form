@@ -20,47 +20,47 @@
 </template>
 
 <script>
-    export default {
-        name: "OrderItem",
-        props: {
-            itemKey: {
-                type: Number,
-                default: 0
-            }
-        },
-        data () {
-            return {
-                items: [
-                    {
-                        key: 0,
-                        img: "/img/item1.jpg",
-                        title: "Headphones TOZO T10 Earbud",
-                        description: "Bluetooth 5.0 Wireless Earbuds / Wireless Charging Case",
-                        price: '$ 49.99'
-                    },
-                    {
-                        key: 1,
-                        img: "/img/item2.jpg",
-                        title: "COWIN E7 Active Over-Ear Headphones",
-                        description: "Noise Cancelling / Bluetooth Headphones",
-                        price: "$ 59.99"
-                    },
-                    {
-                        key: 2,
-                        img: "/img/item3.jpg",
-                        title: "Mpow 059 Over-Ear Headphones",
-                        description: "Bluetooth Headphones / Hi-Fi Stereo Wireless Headset",
-                        price: "$ 34.99"
-                    }
-                ]
-            }
-        },
-        computed: {
-            item () {
-                return this.items[this.itemKey];
-            }
-        }
+export default {
+  name: 'OrderItem',
+  props: {
+    itemKey: {
+      type: Number,
+      default: 0
     }
+  },
+  data () {
+    return {
+      items: [
+        {
+          key: 0,
+          img: '/img/item1.jpg',
+          title: 'Headphones TOZO T10 Earbud',
+          description: 'Bluetooth 5.0 Wireless Earbuds / Wireless Charging Case',
+          price: '$ 49.99'
+        },
+        {
+          key: 1,
+          img: '/img/item2.jpg',
+          title: 'COWIN E7 Active Over-Ear Headphones',
+          description: 'Noise Cancelling / Bluetooth Headphones',
+          price: '$ 59.99'
+        },
+        {
+          key: 2,
+          img: '/img/item3.jpg',
+          title: 'Mpow 059 Over-Ear Headphones',
+          description: 'Bluetooth Headphones / Hi-Fi Stereo Wireless Headset',
+          price: '$ 34.99'
+        }
+      ]
+    }
+  },
+  computed: {
+    item () {
+      return this.items[this.itemKey]
+    }
+  }
+}
 </script>
 
 <style scoped>

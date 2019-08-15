@@ -21,41 +21,40 @@
 </template>
 
 <script>
-    import OrderItem from './OrderItem';
+import OrderItem from './OrderItem'
 
-    export default {
-        name: "CarouselOrderComponent",
-        components: {
-            'order-item': OrderItem,
-        },
-        data () {
-            return {
-                orderItem: 0,
-            }
-        },
-        mounted () {
-            const { item1 } = this.$refs;
-            this.getPrice(this.orderItem, item1);
-        },
-        watch: {
-            orderItem (val) {
-                if (val == 0) {
-                    const { item1 } = this.$refs;
-                    this.getPrice(val, item1);
-                }
-                else {
-                    let item = this.$refs["item"+val];
-                    this.getPrice(val, item);
-                }
-            }
-        },
-        methods: {
-            getPrice (val, item) {
-                let price = item.items[val].price;
-                this.$emit('onUpdate', price);
-            }
-        }
+export default {
+  name: 'CarouselOrderComponent',
+  components: {
+    'order-item': OrderItem
+  },
+  data () {
+    return {
+      orderItem: 0
     }
+  },
+  mounted () {
+    const { item1 } = this.$refs
+    this.getPrice(this.orderItem, item1)
+  },
+  watch: {
+    orderItem (val) {
+      if (val === 0) {
+        const { item1 } = this.$refs
+        this.getPrice(val, item1)
+      } else {
+        let item = this.$refs['item' + val]
+        this.getPrice(val, item)
+      }
+    }
+  },
+  methods: {
+    getPrice (val, item) {
+      let price = item.items[val].price
+      this.$emit('onUpdate', price)
+    }
+  }
+}
 </script>
 
 <style scoped>

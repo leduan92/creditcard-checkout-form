@@ -19,24 +19,24 @@
 </template>
 
 <script>
-    import CarouselOrderComponent from './CarouselOrderComponent';
+import CarouselOrderComponent from './CarouselOrderComponent'
 
-    export default {
-        name: "TheOrderComponent",
-        components: {
-            CarouselOrderComponent
-        },
-        data () {
-            return {
-                price: "$ 00.00"
-            }
-        },
-        methods: {
-            setOrderTotal (item) {
-                this.price = item;
-            }
-        }
-    };
+export default {
+  name: 'TheOrderComponent',
+  components: {
+    CarouselOrderComponent
+  },
+  data () {
+    return {
+      price: '$ 00.00'
+    }
+  },
+  methods: {
+    setOrderTotal (item) {
+      this.price = item
+    }
+  }
+}
 </script>
 
 <style media="screen">

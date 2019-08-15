@@ -26,71 +26,70 @@
 </template>
 
 <script>
-    import { Carousel3d, Slide } from 'vue-carousel-3d';
-    import ThePaymentCarouselSlide from './ThePaymentCarouselSlide'
+import { Carousel3d, Slide } from 'vue-carousel-3d'
+import ThePaymentCarouselSlide from './ThePaymentCarouselSlide'
 
-    export default {
-        name: "CarouselPaymentComponent",
-        components: {
-            Carousel3d,
-            Slide,
-            ThePaymentCarouselSlide
-        },
-        props: {
-            cardHolder: {
-                type: String,
-                default: "NAME LAST NAME"
-            },
-            cardExpDate: {
-                type: String,
-                default: "MM/YYYY"
-            },
-            cardNumber: {
-                type: String,
-                default: ""
-            }
-        },
-        watch: {
-            cardHolder (val) {
-                if (this.childElement !== null) {
-                    this.$set(this.childElement, 'theCardName', val);
-                }
-            },
-            cardExpDate (val) {
-                if (this.childElement !== null) {
-                    this.$set(this.childElement, 'theCardDate', val);
-                }
-            },
-            cardNumber (val) {
-                if (this.childElement !== null) {
-                    this.$set(this.childElement, 'theCardNumber', val);
-                }
-            }
-        },
-        mounted () {
-            this.childElement = this.$refs["card-" + 0];
-        },
-        data () {
-            return {
-                childElement: null,
-            }
-        },
-        methods: {
-            onAfterSlideChange (i) {
-                let slide = this.$refs[i].$el,
-                    child = this.$refs["card-" + i];
-                if (slide.classList.contains("current")) {
-                    child.$el.classList.remove("inactive-slide");
-                    this.childElement = child;
-                }
-                let left_1 = this.$el.getElementsByClassName("left-1").item(0).childNodes.item(0),
-                    right_1 = this.$el.getElementsByClassName("right-1").item(0).childNodes.item(0);
-                left_1.classList.add("inactive-slide");
-                right_1.classList.add("inactive-slide");
-
-            }
-        }
-    };
+export default {
+  name: 'CarouselPaymentComponent',
+  components: {
+    Carousel3d,
+    Slide,
+    ThePaymentCarouselSlide
+  },
+  props: {
+    cardHolder: {
+      type: String,
+      default: 'NAME LAST NAME'
+    },
+    cardExpDate: {
+      type: String,
+      default: 'MM/YYYY'
+    },
+    cardNumber: {
+      type: String,
+      default: ''
+    }
+  },
+  watch: {
+    cardHolder (val) {
+      if (this.childElement !== null) {
+        this.$set(this.childElement, 'theCardName', val)
+      }
+    },
+    cardExpDate (val) {
+      if (this.childElement !== null) {
+        this.$set(this.childElement, 'theCardDate', val)
+      }
+    },
+    cardNumber (val) {
+      if (this.childElement !== null) {
+        this.$set(this.childElement, 'theCardNumber', val)
+      }
+    }
+  },
+  mounted () {
+    this.childElement = this.$refs['card-' + 0]
+  },
+  data () {
+    return {
+      childElement: null
+    }
+  },
+  methods: {
+    onAfterSlideChange (i) {
+      let slide = this.$refs[i].$el
+      let child = this.$refs['card-' + i]
+      if (slide.classList.contains('current')) {
+        child.$el.classList.remove('inactive-slide')
+        this.childElement = child
+      }
+      let left = this.$el.getElementsByClassName('left-1').item(0).childNodes.item(0)
+      let right = this.$el.getElementsByClassName('right-1').item(0).childNodes.item(0)
+      left.classList.add('inactive-slide')
+      right.classList.add('inactive-slide')
+    }
+  }
+}
 </script>
 
 <style media="screen">

@@ -120,102 +120,100 @@
 </template>
 
 <script>
-    import { mask } from 'vue-the-mask';
+import { mask } from 'vue-the-mask'
 
-    export default {
-        name: "ThePaymentForm",
-        directives: { mask },
-        data () {
-            return {
-                showAlert: false,
-                alertMessage: "",
-                valid: false,
-                name: '',
-                nameRules: [
-                    v => !!v || 'Name is required',
-                    v => (v && v.length <= 50) || 'Name must be less than 50 characters',
-                ],
-                cardNumber: '',
-                cardNumberRules: [
-                    v => (v && v.length == 19)|| 'The card number is required',
-                ],
-                cardNumberMask: "#### #### #### ####",
-                dateFormat: "MM/YYYY",
-                month: '',
-                months: [],
-                year: '',
-                years: [],
-                monthRules: [
-                    v => !!v || "",
-                ],
-                yearRules: [
-                    v => !!v || "",
-                ],
-                cvvValue: "",
-                cvvRules: [
-                    v => !!v || ""
-                ],
-                checkbox: false,
-            }
-        },
-        mounted () {
-            this.getMonths();
-            this.getYears();
-        },
-        computed: {
-            endDate () {
-                return this.$moment('12/2030', "MM/YYYY");
-            },
-            startDate () {
-                return this.$moment('01/2019', "MM/YYYY");
-            },
-            date () {
-                return this.$moment({
-                    year: this.year,
-                    month: this.month
-                })
-            }
-        },
-        methods: {
-            getExpDate () {
-                if (this.year !== '' && this.month !== '') {
-                    this.$emit('onSelectDate', this.date);
-                }
-
-            },
-            getYears: function() {
-                let _to = this.endDate.year();
-                for (let _y = this.startDate.year(); _y <= _to; _y++) {
-                    this.years.push(_y);
-                }
-            },
-            getMonths: function() {
-                let _to = 11,
-                    _m = 0;
-                if (this.year >= this.endDate.year()) {
-                    _to = this.endDate.month();
-                }
-                if (this.year <= this.startDate.year()) {
-                    _m = this.startDate.month();
-                }
-                for (; _m <= _to; _m++ ) {
-                    this.months.push(_m + 1);
-                }
-            },
-            validate () {
-                if (this.$refs.form.validate()) {
-                  this.valid = true;
-                  this.alertMessage = "Thank you for using our services.";
-                  this.showAlert = true;
-                  this.$refs.form.reset();
-                }
-                else {
-                  this.valid = false;
-                  this.$refs.form.resetValidation()
-                }
-            },
-        }
-    };
+export default {
+  name: 'ThePaymentForm',
+  directives: { mask },
+  data () {
+    return {
+      showAlert: false,
+      alertMessage: '',
+      valid: false,
+      name: '',
+      nameRules: [
+        v => !!v || 'Name is required',
+        v => (v && v.length <= 50) || 'Name must be less than 50 characters'
+      ],
+      cardNumber: '',
+      cardNumberRules: [
+        v => (v && v.length === 19) || 'The card number is required'
+      ],
+      cardNumberMask: '#### #### #### ####',
+      dateFormat: 'MM/YYYY',
+      month: '',
+      months: [],
+      year: '',
+      years: [],
+      monthRules: [
+        v => !!v || ''
+      ],
+      yearRules: [
+        v => !!v || ''
+      ],
+      cvvValue: '',
+      cvvRules: [
+        v => !!v || ''
+      ],
+      checkbox: false
+    }
+  },
+  mounted () {
+    this.getMonths()
+    this.getYears()
+  },
+  computed: {
+    endDate () {
+      return this.$moment('12/2030', 'MM/YYYY')
+    },
+    startDate () {
+      return this.$moment('01/2019', 'MM/YYYY')
+    },
+    date () {
+      return this.$moment({
+        year: this.year,
+        month: this.month
+      })
+    }
+  },
+  methods: {
+    getExpDate () {
+      if (this.year !== '' && this.month !== '') {
+        this.$emit('onSelectDate', this.date)
+      }
+    },
+    getYears: function () {
+      let _to = this.endDate.year()
+      for (let _y = this.startDate.year(); _y <= _to; _y++) {
+        this.years.push(_y)
+      }
+    },
+    getMonths: function () {
+      let _to = 11
+      let _m = 0
+      if (this.year >= this.endDate.year()) {
+        _to = this.endDate.month()
+      }
+      if (this.year <= this.startDate.year()) {
+        _m = this.startDate.month()
+      }
+      for (; _m <= _to; _m++) {
+        this.months.push(_m + 1)
+      }
+    },
+    validate () {
+      if (this.$refs.form.validate()) {
+        this.valid = true
+        this.alertMessage = 'Thank you for using our services.'
+        this.showAlert = true
+        this.$refs.form.reset()
+      } else {
+        this.valid = false
+        this.$refs.form.resetValidation()
+      }
+    }
+  }
+}
 </script>
 <style media="screen">
     .payment-textfield .v-input__control {

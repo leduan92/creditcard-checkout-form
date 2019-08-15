@@ -5,10 +5,8 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import 'roboto-fontface/css/roboto/roboto-fontface.css'
 import '@mdi/font/css/materialdesignicons.css'
-import VueTheMask from 'vue-the-mask'
 
 Vue.use(require('vue-moment'))
-Vue.use(VueTheMask)
 
 Vue.config.productionTip = false
 

@@ -28,66 +28,60 @@
 </template>
 
 <script>
-    export default {
-        name: "ThePaymentCarouselSlide",
-        props: {
-            cardLogo: {
-                type: String,
-                default: ""
-            },
-        },
-        data () {
-            return {
-                cardName: "NAME LAST NAME",
-                cardDate: "MM/YYYY",
-                cardNumber: "**** **** **** 5555"
-            }
-        },
-        computed: {
-            cardLogoSrc () {
-                switch (this.cardLogo) {
-                    case "visa":
-                        return "/img/visa.png";
-                    case "mastercard":
-                        return "/img/mastercard.png";
-                    case "paypal":
-                        return "/img/paypal.png";
-                    default:
-                        return ""
-                }
-            },
-            theCardName: {
-                get () {
-                    return this.cardName;
-                },
-                set (val) {
-                    if (val === "")
-                        this.cardName = "NAME LAST NAME";
-                    else this.cardName = val;
-                }
-            },
-            theCardNumber: {
-                get () {
-                    return this.cardNumber;
-                },
-                set (val) {
-                    if (val === "")
-                        this.cardNumber = "**** **** **** 5555";
-                    else this.cardNumber = val;
-                }
-            },
-            theCardDate: {
-                get () {
-                    return this.cardDate;
-                },
-                set (val) {
-                    if (val === "")
-                        this.cardDate = "MM/YYYY";
-                    else this.cardDate = val;
-                }
-            }
-        }
+export default {
+  name: 'ThePaymentCarouselSlide',
+  props: {
+    cardLogo: {
+      type: String,
+      default: ''
     }
+  },
+  data () {
+    return {
+      cardName: 'NAME LAST NAME',
+      cardDate: 'MM/YYYY',
+      cardNumber: '**** **** **** 5555'
+    }
+  },
+  computed: {
+    cardLogoSrc () {
+      switch (this.cardLogo) {
+        case 'visa':
+          return '/img/visa.png'
+        case 'mastercard':
+          return '/img/mastercard.png'
+        case 'paypal':
+          return '/img/paypal.png'
+        default:
+          return ''
+      }
+    },
+    theCardName: {
+      get () {
+        return this.cardName
+      },
+      set (val) {
+        if (val === '') { this.cardName = 'NAME LAST NAME' } else this.cardName = val
+      }
+    },
+    theCardNumber: {
+      get () {
+        return this.cardNumber
+      },
+      set (val) {
+        if (val === '') { this.cardNumber = '**** **** **** 5555' } else this.cardNumber = val
+      }
+    },
+    theCardDate: {
+      get () {
+        return this.cardDate
+      },
+      set (val) {
+        if (val === '') { this.cardDate = 'MM/YYYY' } else this.cardDate = val
+      }
+    }
+  }
+}
 </script>
 
 <style media="screen">
