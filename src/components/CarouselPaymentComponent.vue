@@ -47,7 +47,7 @@ export default {
     },
     cardNumber: {
       type: String,
-      default: ''
+      default: '**** **** **** 5555'
     }
   },
   watch: {
@@ -65,6 +65,16 @@ export default {
       if (this.childElement !== null) {
         this.$set(this.childElement, 'theCardNumber', val)
       }
+    },
+    childElement (val, oldVal) {
+      if (oldVal !== null) {
+        this.$set(oldVal, 'theCardName', 'NAME LAST NAME')
+        this.$set(oldVal, 'theCardDate', 'MM/YYYY')
+        this.$set(oldVal, 'theCardNumber', '**** **** **** 5555')
+      }
+      this.$set(val, 'theCardName', this.cardHolder)
+      this.$set(val, 'theCardDate', this.cardExpDate)
+      this.$set(val, 'theCardNumber', this.cardNumber)
     }
   },
   mounted () {
