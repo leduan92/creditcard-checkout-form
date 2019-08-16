@@ -26,6 +26,7 @@
                               name="card-holder"
                               ref="card-holder"
                               :value="name"
+                              count="25"
                 ></v-text-field>
             </v-flex>
 
@@ -65,7 +66,7 @@
                             ref="card-month"
                     ></v-select>
                 </v-flex>
-                <v-flex sm2>
+                <v-flex sm3>
                     <v-select
                             v-model="year"
                             :rules="yearRules"
@@ -79,16 +80,16 @@
                             ref="card-year"
                     ></v-select>
                 </v-flex>
-                <v-flex sm2 offset-xs4>
+                <v-flex sm2 offset-xs3>
                     <v-text-field
                             v-model="cvvValue"
                             :rules="cvvRules"
                             class="mt-0 pt-0 payment-textfield card-cvv"
                             solo
                             required
-                            :count='3'
                             data-card-cvv
                             ref="card-cvv"
+                            count="3"
                     ></v-text-field>
                 </v-flex>
             </v-layout>
@@ -133,7 +134,7 @@ export default {
       name: '',
       nameRules: [
         v => !!v || 'Name is required',
-        v => (v && v.length <= 50) || 'Name must be less than 50 characters'
+        v => (v && v.length <= 25) || 'Name must be less than 25 characters'
       ],
       cardNumber: '',
       cardNumberRules: [
@@ -153,7 +154,7 @@ export default {
       ],
       cvvValue: '',
       cvvRules: [
-        v => !!v || ''
+        v => (v && v.length === 3) || ""
       ],
       checkbox: false
     }
