@@ -115,4 +115,8 @@ export default {
         font-size: 10px!important;
         padding: 0 14px;
     }
+
+    .card-exp-date {
+      padding: 0 0 0 6px;
+    }
 </style>

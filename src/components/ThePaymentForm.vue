@@ -66,21 +66,20 @@
                             ref="card-month"
                     ></v-select>
                 </v-flex>
-                <v-flex sm3>
+                <v-flex sm4>
                     <v-select
                             v-model="year"
                             :rules="yearRules"
-                            class="mt-0 pt-0 payment-exp-date payment-textfield payment-textfield-year"
+                            class="mt-0 pt-0 payment-exp-date payment-textfield card-year"
                             solo
                             :items="years"
-                            style="width: 85px"
                             required
                             @input="getExpDate"
                             data-card-year
                             ref="card-year"
                     ></v-select>
                 </v-flex>
-                <v-flex offset-xs1>
+                <v-flex>
                     <v-text-field
                             v-model="cvvValue"
                             :rules="cvvRules"
@@ -174,7 +173,7 @@ export default {
       ],
       cvvValue: '',
       cvvRules: [
-        v => (v && v.length === 3) || "The CVV is required"
+        v => (v && v.length === 3) || "The CVV is incorrect"
       ],
       checkbox: false
     }
@@ -248,11 +247,11 @@ export default {
         border-radius: 12px;
     }
 
-    .payment-exp-date {
+    .card-month {
         width: 65px;
     }
 
-    .payment-textfield-year {
+    .card-year {
         margin-left: 8px !important;
     }
 
