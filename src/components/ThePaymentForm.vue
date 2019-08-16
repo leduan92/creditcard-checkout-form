@@ -80,7 +80,7 @@
                             ref="card-year"
                     ></v-select>
                 </v-flex>
-                <v-flex sm2 offset-xs3>
+                <v-flex offset-xs1>
                     <v-text-field
                             v-model="cvvValue"
                             :rules="cvvRules"
@@ -90,11 +90,12 @@
                             data-card-cvv
                             ref="card-cvv"
                             count="3"
+                            :v-mask="cvvMask"
                     ></v-text-field>
                 </v-flex>
             </v-layout>
 
-            <v-flex md9 offset-xs1 class="payment-checkbox">
+            <v-flex md5 offset-xs1 class="payment-checkbox">
                 <!-- <v-subheader light class="payment-form-label">Save card information</v-subheader> -->
                 <v-checkbox
                         v-model="checkbox"
@@ -141,6 +142,7 @@ export default {
         v => (v && v.length === 19) || 'The card number is required'
       ],
       cardNumberMask: '#### #### #### ####',
+      cvvMask: '###',
       dateFormat: 'MM/YYYY',
       month: '',
       months: [],
@@ -154,7 +156,7 @@ export default {
       ],
       cvvValue: '',
       cvvRules: [
-        v => (v && v.length === 3) || ""
+        v => (v && v.length === 3) || "The CVV is required"
       ],
       checkbox: false
     }
@@ -241,10 +243,16 @@ export default {
     .payment-checkbox {
         bottom: 20px;
         position: relative;
+        margin-right: 0!important;
     }
 
     .payment-checkbox label{
         font-size: 10px;
+    }
+
+    .card-cvv .v-input__slot {
+      margin-left: 65px;
+      width: 55px;
     }
 
     .payment-submit-btn {
