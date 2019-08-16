@@ -31,7 +31,7 @@
 
             <v-flex md10 offset-xs1>
                 <v-subheader light class="payment-form-label">CARD NUMBER</v-subheader>
-                <v-text-field class="payment-textfield card-number"
+                <v-text-field class="payment-textfield card-number-input"
                               v-model="cardNumber"
                               :rules="cardNumberRules"
                               v-mask="cardNumberMask"
@@ -113,6 +113,7 @@
                         @click="clear"
                         elevation="8"
                         ref="clear-form-btn"
+                        :disabled="!inputData"
                 >
                     CLEAR
                 </v-btn>
@@ -149,6 +150,7 @@ export default {
       showAlert: false,
       alertMessage: '',
       valid: false,
+      inputData: false,
       cardHolder: '',
       nameRules: [
         v => !!v || 'Name is required',
@@ -156,7 +158,7 @@ export default {
       ],
       cardNumber: '',
       cardNumberRules: [
-        v => (v && v.length === 19) || 'The card number is required'
+        v => (v && v.length === 19) || 'The card number most be 16 character long'
       ],
       cardNumberMask: '#### #### #### ####',
       cvvMask: '###',
@@ -182,6 +184,43 @@ export default {
   mounted () {
     this.getMonths()
     this.getYears()
+  },
+  watch: {
+    cardHolder (val) {
+      if (val !== '') {
+        this.inputData = true
+      } else {
+        this.inputData = false
+      }
+    },
+    cardNumber (val) {
+      if (val !== '') {
+        this.inputData = true
+      } else {
+        this.inputData = false
+      }
+    },
+    month (val) {
+      if (val !== '') {
+        this.inputData = true
+      } else {
+        this.inputData = false
+      }
+    },
+    year (val) {
+      if (val !== '') {
+        this.inputData = true
+      } else {
+        this.inputData = false
+      }
+    },
+    cvvValue (val) {
+      if (val !== '') {
+        this.inputData = true
+      } else {
+        this.inputData = false
+      }
+    }
   },
   computed: {
     endDate () {

@@ -91,13 +91,13 @@ export default {
 
     .card-info {
         margin-top: 16px;
+        color: #E4E0E2!important;
     }
 
     .card-number {
-        color: white;
-        font-size: 14px;
+        font-size: 14px!important;
         word-spacing: 14px;
-        padding: 0 20px;
+        padding: 0 20px!important;
     }
 
     .card-labels, .card-data {
@@ -111,7 +111,6 @@ export default {
     }
 
     .card-name, .card-exp-date {
-        color: #E4E0E2!important;
         font-size: 10px!important;
         padding: 0 14px;
     }
