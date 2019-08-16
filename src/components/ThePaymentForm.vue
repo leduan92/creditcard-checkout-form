@@ -62,6 +62,7 @@
                             solo
                             :items="months"
                             required
+                            @input="getExpDate"
                             data-card-month
                             ref="card-month"
                     ></v-select>
