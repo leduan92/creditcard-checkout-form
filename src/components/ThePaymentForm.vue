@@ -285,6 +285,6 @@ export default {
     .success-alert {
         z-index: 2;
         position: absolute;
-        font-size: 12px;
+        right: 15vw;
     }
 </style>
