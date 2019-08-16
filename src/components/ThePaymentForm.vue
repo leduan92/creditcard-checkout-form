@@ -103,20 +103,38 @@
                 ></v-checkbox>
             </v-flex>
 
-            <v-btn  :style="{backgroundColor: (!valid) ? '#79777C!important' : ''}"
-                    rounded
-                    right
-                    dark
-                    :disabled="!valid"
-                    color="#0A0B24"
-                    class="payment-submit-btn"
-                    large
-                    @click="validate"
-                    elevation="8"
-                    ref="submit-form-btn"
-            >
-                PURCHASE
-            </v-btn>
+            <v-layout class="form-actions">
+              <v-flex sm3>
+                <v-btn  rounded
+                        dark
+                        left
+                        color="#79777"
+                        class="payment-clear-btn"
+                        medium
+                        @click="clear"
+                        elevation="8"
+                        ref="clear-form-btn"
+                >
+                    CLEAR
+                </v-btn>
+              </v-flex>
+              <v-flex sm4>
+                <v-btn
+                        right
+                        rounded
+                        dark
+                        :disabled="!valid"
+                        color="#0A0B24"
+                        class="payment-submit-btn"
+                        medium
+                        @click="validate"
+                        elevation="8"
+                        ref="submit-form-btn"
+                >
+                    PURCHASE
+                </v-btn>
+              </v-flex>
+            </v-layout>
         </v-form>
     </v-flex>
 </template>
@@ -214,6 +232,9 @@ export default {
         this.valid = false
         this.$refs.form.resetValidation()
       }
+    },
+    clear () {
+      this.$refs.form.reset()
     }
   }
 }
@@ -255,15 +276,10 @@ export default {
       width: 55px;
     }
 
-    .payment-submit-btn {
+    .form-actions {
         position: relative;
-        right: 0;
-        left: 15vw;
-        bottom: 2vw;
-    }
-
-    .disabled-btn-color {
-        background-color: #79777C!important;
+        bottom: 21px;
+        left: 10vw;
     }
 
     .success-alert {
