@@ -17,15 +17,14 @@
             <v-flex md10 offset-xs1>
                 <v-subheader light class="payment-form-label">CARD HOLDER</v-subheader>
                 <v-text-field class="payment-textfield card-holder"
-                              v-model="name"
+                              v-model="cardHolder"
                               :rules="nameRules"
                               required
                               solo
-                              @input="$emit('onInputName', name)"
+                              @input="$emit('onInputName', cardHolder)"
                               data_card_holder
                               name="card-holder"
                               ref="card-holder"
-                              :value="name"
                               count="25"
                 ></v-text-field>
             </v-flex>
@@ -150,7 +149,7 @@ export default {
       showAlert: false,
       alertMessage: '',
       valid: false,
-      name: '',
+      cardHolder: '',
       nameRules: [
         v => !!v || 'Name is required',
         v => (v && v.length <= 25) || 'Name must be less than 25 characters'
@@ -174,9 +173,10 @@ export default {
       ],
       cvvValue: '',
       cvvRules: [
-        v => (v && v.length === 3) || "The CVV is incorrect"
+        v => (v && v.length === 3) || 'The CVV is incorrect'
       ],
-      checkbox: false
+      checkbox: false,
+      cardInfo: {}
     }
   },
   mounted () {
@@ -226,6 +226,15 @@ export default {
       if (this.$refs.form.validate()) {
         this.valid = true
         this.alertMessage = 'Thank you for using our services.'
+        if (this.checkbox) {
+          this.cardInfo = {
+            cardHolder: this.cardHolder,
+            cardNumber: this.cardNumber,
+            expDate: this.date._d,
+            cvvValue: this.cvvValue
+          }
+        }
+        console.log(this.cardInfo)
         this.showAlert = true
         this.$refs.form.reset()
       } else {
